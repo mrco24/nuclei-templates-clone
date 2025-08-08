@@ -29,8 +29,9 @@ if [[ -z "$REPO_FILE" && "$DEDUPLICATE" = false ]]; then
   exit 1
 fi
 
-mkdir -p my-nuclei-templates
-cd my-nuclei-templates || { echo "❌ Failed to enter directory all_repos"; exit 1; }
+TARGET_DIR="my-nuclei-templates"
+mkdir -p "$TARGET_DIR"
+cd "$TARGET_DIR" || { echo "❌ Failed to enter directory $TARGET_DIR"; exit 1; }
 
 # ---------------------------------------
 # Function: Clone Repos
@@ -45,12 +46,6 @@ clone_repos() {
     # Skip Gist repos
     if [[ "$repo" == *"gist.github.com"* ]]; then
       echo "⚠ Skipping Gist - $repo"
-      continue
-    fi
-
-    # Skip nuclei-templates repos
-    if [[ "$repo" == *"nuclei-templates"* ]]; then
-      echo "⚠ Skipping nuclei-templates repo - $repo"
       continue
     fi
 
@@ -70,8 +65,6 @@ clone_repos() {
 
     echo "📥 Cloning - $repo ..."
     git clone "$repo" "$folder" || { echo "❌ Failed to clone - $repo"; continue; }
-
-    # No file deletion or YAML extraction here
 
   done < "../$REPO_FILE"
 }
@@ -113,7 +106,6 @@ deduplicate_yaml_by_filename() {
     remaining=$((total_files - processed))
     percent=$((processed * 100 / total_files))
 
-    # Show progress every 10 files or on last file
     if (( processed % 10 == 0 )) || (( processed == total_files )); then
       echo "🔄 Progress: $processed / $total_files files processed ($percent%), duplicates removed so far: $duplicates_removed, remaining: $remaining"
     fi
