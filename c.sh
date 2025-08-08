@@ -30,7 +30,7 @@ if [[ -z "$REPO_FILE" && "$DEDUPLICATE" = false ]]; then
 fi
 
 mkdir -p my-nuclei-templates
-cd all_repos || { echo "❌ Failed to enter directory all_repos"; exit 1; }
+cd my-nuclei-templates || { echo "❌ Failed to enter directory all_repos"; exit 1; }
 
 # ---------------------------------------
 # Function: Clone Repos
