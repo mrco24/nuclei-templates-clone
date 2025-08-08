@@ -1,5 +1,7 @@
 https://github.com/0xAwali/Blind-SSRF
 https://github.com/0xAwali/Virtual-Host
+https://github.com/0x727/ObserverWard
+https://github.com/0x727/ObserverWard_0x727
 https://github.com/mrco24/Mrco24-nuclei-templates
 https://github.com/0xKayala/Custom-Nuclei-Templates
 https://github.com/0xmaximus/final_freaking_nuclei_templates
