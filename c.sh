@@ -29,7 +29,7 @@ if [[ -z "$REPO_FILE" && "$DEDUPLICATE" = false ]]; then
   exit 1
 fi
 
-mkdir -p all_repos
+mkdir -p my-nuclei-templates
 cd all_repos || { echo "❌ Failed to enter directory all_repos"; exit 1; }
 
 # ---------------------------------------
